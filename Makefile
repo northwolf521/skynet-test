@@ -4,7 +4,8 @@ PLAT ?= linux
 SHARED := -fPIC --shared
 LUA_CLIB_PATH ?= server/luaclib
 
-CFLAGS = -g -O2 -Wall
+CFLAGS = -g -O2 -Wall 
+DEPS = -Iskynet/3rd/lua
 
 LUA_CLIB = protobuf log
 
@@ -24,10 +25,10 @@ $(LUA_CLIB_PATH) :
 
 
 $(LUA_CLIB_PATH)/protobuf.so : | $(LUA_CLIB_PATH)
-	cd server/lualib-src/pbc && $(MAKE) lib && cd binding/lua53 && $(MAKE) && cd ../../../../.. && cp server/lualib-src/pbc/binding/lua53/protobuf.so $@
+	cd server/lualib-src/pbc && $(MAKE) lib $(DEPS) && cd binding/lua53  && $(MAKE) $(DEPS) && cd ../../../../.. && cp server/lualib-src/pbc/binding/lua53/protobuf.so $@
 
 $(LUA_CLIB_PATH)/log.so : server/lualib-src/lua-log.c | $(LUA_CLIB_PATH)
-	$(CC) $(CFLAGS) $(SHARED) $^ -o $@ -Iskynet/3rd/lua
+	$(CC) $(CFLAGS) $(SHARED) $^ -o $@ $(DEPS)
 
 clean :
 	cd skynet && $(MAKE) clean
