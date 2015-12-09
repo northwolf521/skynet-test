@@ -10,12 +10,12 @@ log_dirname = "log"
 log_basename = "test"
 
 -- 集群名称配置文件
-cluster = "./cluster/clustername.lua"
+cluster = "./server/cluster/clustername.lua"
 
-testservice = "./test/?.lua;" ..
-			   "./common/?.lua;" ..
-			   "./common/cluster/?.lua;" ..
-			   "./test/datacenter/?.lua"
+testservice = "./server/test/?.lua;" ..
+			   "./server/common/?.lua;" ..
+			   "./server/common/cluster/?.lua;" ..
+			   "./server/test/datacenter/?.lua"
 
 -- LUA服务所在位置
 luaservice = skynetroot .. "service/?.lua;" .. testservice
@@ -23,20 +23,20 @@ snax = testservice
 
 -- 用于加载LUA服务的LUA代码
 lualoader = skynetroot .. "lualib/loader.lua"
-preload = "./global/preload.lua"	-- run preload.lua before every lua service run
+preload = "./server/global/preload.lua"	-- run preload.lua before every lua service run
 
 -- C编写的服务模块路径
 cpath = skynetroot .. "cservice/?.so"
 
 -- 将添加到 package.path 中的路径，供 require 调用。
 lua_path = skynetroot .. "lualib/?.lua;" ..
-		   "./lualib/?.lua;" ..
-		   "./global/?.lua;" ..
-		   "./common/base/?.lua;" ..
-		   "./test/entity/?.lua"
+		   "./server/lualib/?.lua;" ..
+		   "./server/global/?.lua;" ..
+		   "./server/common/base/?.lua;" ..
+		   "./server/test/entity/?.lua"
 
 -- 将添加到 package.cpath 中的路径，供 require 调用。
-lua_cpath = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
+lua_cpath = skynetroot .. "luaclib/?.so;" .. "./server/luaclib/?.so"
 
 -- 后台模式
 --daemon = "./login.pid"
