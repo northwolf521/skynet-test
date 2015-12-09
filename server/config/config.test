@@ -32,7 +32,7 @@ cpath = skynetroot .. "cservice/?.so"
 lua_path = skynetroot .. "lualib/?.lua;" ..
 		   "./lualib/?.lua;" ..
 		   "./global/?.lua;" ..
-		   "./common/entitybase/?.lua;" ..
+		   "./common/base/?.lua;" ..
 		   "./test/entity/?.lua"
 
 -- 将添加到 package.cpath 中的路径，供 require 调用。
